@@ -145,3 +145,5 @@ PADet <- inner_join (PADet, pres %>% select (date.2, nStations)) %>%
           week.2 = lubridate::week (date.2), 
           date.random = (as.numeric (date.1) - as.numeric (min (date.1))) / 7, 
           date.id = paste (date.1, ecocean))
+
+saveRDS(PADet, "./data/processed/probability_acoustic_detection.rds")
