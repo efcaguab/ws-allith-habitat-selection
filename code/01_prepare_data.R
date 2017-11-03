@@ -42,6 +42,23 @@ PC.TIMES %<>% as.tibble() %>%
 #   geom_line (aes(x = DATA, y = delay)) + 
 #   facet_wrap(~ RECEIVERID)
 
+# required manual corrections
+
+PC.TIMES %<>% 
+  mutate(DATETIME = if_else(DATETIME == as.POSIXct ("2015-11-21 12:52:00") & RECEIVERID == "VR2W-104854", DATETIME - 3600*9, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2015-07-20 20:09:00") & RECEIVERID == "VR2W-103917", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2015-07-21 20:00:00") & RECEIVERID == "VR2W-109032", DATETIME - 3600*6, DATETIME))
+
+
+# Correct time drift 
+receiverIDs <- levels (MAFIA.DETECTIONS$RECEIVERID)
+#pb <- txtProgressBar(max=length (receiverIDs), style = 3)
+for (i in 1:length (receiverIDs)){
+  #setTxtProgressBar (pb, i)
+  receiver.PC.TIMES <- PC.TIMES[PC.TIMES$RECEIVERID == receiverIDs[i], ]
+  drift <- approx (receiver.PC.TIMES$DATA, receiver.PC.TIMES$DATA - receiver.PC.TIMES$DATETIME, MAFIA.DETECTIONS[MAFIA.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME)$y
+  MAFIA.DETECTIONS[MAFIA.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME <- MAFIA.DETECTIONS[MAFIA.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME + drift
+}
 
 # ASSIGN DETECTIONS TO STATIONS -------------------------------------------
 
