@@ -3,6 +3,7 @@ library(tibble)
 library(magrittr)
 library(foreach)
 library(doMC); registerDoMC(cores = 4)
+library(magrittr)
 
 # FUNCTION ----------------------------------------------------------------
 
@@ -124,22 +125,27 @@ times.in <- plyr::ddply (array.events, "stationname", function (x){
 }) %>%  
   # Generate weekly approximations
   mutate (w.date.in = cut (date.in, 'week'),
-          w.date.out = cut (date.out, '2 week')) %>% tbl_df()
+          w.date.out = cut (date.out, 'week')) %>% tbl_df()
 
 # For each re-detection date calculate the number of working stations
 pres <- plyr::ddply (PADet, "date.2", function (x, times.in){
   # Filter out stations active at that date
   stations.listening <- filter (times.in, x$date.2[1] >= as.Date (w.date.in), x$date.2[1] <= as.Date (w.date.out)) %>% 
     select (station) %>%
-    unique()
+    unique() %>%
+    extract2(1) %>%
+    as.character() %>%
+    # see if they are inshore or offshore
+    grepl("WS", ., fixed = TRUE)
   # Create data frame with the list and the number of stations
   y <- data.frame (#configuration = do.call (paste, as.list(stations.listening$station)), 
-    nStations = nrow (stations.listening))
+    nStations_inshore = sum(stations.listening), 
+    nStations_offshore = sum(!stations.listening))
   return (y)
-}, times.in = times.in) %>% tbl_df ()
+}, times.in = times.in) %>% as.tibble ()
 
 # Merge with the Probability of acoustic detection data frame
-PADet <- inner_join (PADet, pres %>% select (date.2, nStations)) %>%
+PADet <- inner_join (PADet, pres %>% select (date.2, nStations_inshore, nStations_offshore)) %>%
   # Simplify factors by making them integers
   mutate (week.1 = lubridate::week (date.1), 
           week.2 = lubridate::week (date.2), 
