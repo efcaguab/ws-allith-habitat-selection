@@ -112,6 +112,19 @@ AL.DETECTIONS <- AL.DETECTIONS %>% filter (STATIONNAME != "Unknown", !is.na (STA
 WS.TAGS$DATE <- as.POSIXct (WS.TAGS$DATE, format="%m/%d/%Y", tz = "Asia/Riyadh")
 WS.TAGS$NAME <- WS.TAGS$COMMENT <- WS.TAGS$SHARK <- NULL
 
+# account for transmitter that was used to tag two different sharks: A69-9002-2673
+WS.TAGS %<>%
+  mutate(TRANSMITTERID = as.character(TRANSMITTERID),
+         TRANSMITTERID = if_else(TRANSMITTERID == "A69-9002-2673" & DATE == as.POSIXct("2010-05-04",tz = "Asia/Riyadh"), 
+                                 "A69-9002-2673-1", TRANSMITTERID), 
+         TRANSMITTERID = if_else(TRANSMITTERID == "A69-9002-2673" & DATE == as.POSIXct("2015-04-19",tz = "Asia/Riyadh"), 
+                                 "A69-9002-2673-2", TRANSMITTERID))
+AL.DETECTIONS %<>%
+  mutate(TRANSMITTERID = as.character(TRANSMITTERID),
+         TRANSMITTERID = if_else(TRANSMITTERID == "A69-9002-2673" & DATETIME < as.POSIXct("2015-04-19",tz = "Asia/Riyadh"),
+                                 "A69-9002-2673-1", TRANSMITTERID),
+         TRANSMITTERID = if_else(TRANSMITTERID == "A69-9002-2673" & DATETIME > as.POSIXct("2015-04-19",tz = "Asia/Riyadh"),
+                                 "A69-9002-2673-2", TRANSMITTERID)) 
 # Select only whale shark detections 
 DET.WS <- AL.DETECTIONS[!is.na (match (AL.DETECTIONS$TRANSMITTERID, WS.TAGS$TRANSMITTERID)), ]
 
