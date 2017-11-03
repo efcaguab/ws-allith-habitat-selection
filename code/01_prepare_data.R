@@ -51,13 +51,13 @@ PC.TIMES %<>%
 
 
 # Correct time drift 
-receiverIDs <- levels (MAFIA.DETECTIONS$RECEIVERID)
+receiverIDs <- levels (AL.DETECTIONS$RECEIVERID)
 #pb <- txtProgressBar(max=length (receiverIDs), style = 3)
 for (i in 1:length (receiverIDs)){
   #setTxtProgressBar (pb, i)
   receiver.PC.TIMES <- PC.TIMES[PC.TIMES$RECEIVERID == receiverIDs[i], ]
-  drift <- approx (receiver.PC.TIMES$DATA, receiver.PC.TIMES$DATA - receiver.PC.TIMES$DATETIME, MAFIA.DETECTIONS[MAFIA.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME)$y
-  MAFIA.DETECTIONS[MAFIA.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME <- MAFIA.DETECTIONS[MAFIA.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME + drift
+  drift <- approx (receiver.PC.TIMES$DATA, receiver.PC.TIMES$DATA - receiver.PC.TIMES$DATETIME, AL.DETECTIONS[AL.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME)$y
+  AL.DETECTIONS[AL.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME <- AL.DETECTIONS[AL.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME + drift
 }
 
 # ASSIGN DETECTIONS TO STATIONS -------------------------------------------
