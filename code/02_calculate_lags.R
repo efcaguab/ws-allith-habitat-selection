@@ -1,9 +1,21 @@
+#!/usr/bin/env Rscript
+library(optparse)
 library(dplyr)
 library(tibble)
 library(magrittr)
 library(foreach)
 library(doMC); registerDoMC(cores = 4)
 library(magrittr)
+
+# bin window (weeks)
+
+option_list = list(
+  make_option(c("-w", "--window_length"), type="integer", default=2, 
+              help="length of the binning window in weeks", metavar="character")
+) 
+
+opt_parser = OptionParser(option_list=option_list)
+opt = parse_args(opt_parser)
 
 # FUNCTION ----------------------------------------------------------------
 
@@ -68,7 +80,7 @@ ws.tags %<>%
 det.ws <- inner_join (det.ws, select (ws.tags, -(size), -(number)))
 
 # Clump in a weekly basis
-det.ws <- mutate (det.ws, date.week = cut (datetime, '2 week') %>% as.Date ())
+det.ws <- mutate (det.ws, date.week = cut (datetime, paste(opt$window_length, 'week')) %>% as.Date ())
 aco.week <- plyr::ddply (det.ws, "date.week", function (det){
   sharks <- !duplicated (det$ecocean)
   per.week <- data.frame (ecocean = det$ecocean[sharks], 
@@ -83,7 +95,7 @@ aco.week <- plyr::ddply (det.ws, "date.week", function (det){
 aco.week %<>%
   mutate(tim = difftime(max(date.week),date.tag,  units = "days"), 
          tim = as.numeric(tim)) %>%
-  filter(tim > 7) %>%
+  filter(tim > 7 * opt$window_length) %>%
   select(-tim)
 
 
