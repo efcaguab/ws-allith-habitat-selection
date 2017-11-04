@@ -4,18 +4,22 @@ library(dplyr)
 library(tibble)
 library(magrittr)
 library(foreach)
-library(doMC); registerDoMC(cores = 4)
+library(doMC)
 library(magrittr)
 
 # bin window (weeks)
 
 option_list = list(
   make_option(c("-w", "--window_length"), type="integer", default=2, 
-              help="length of the binning window in weeks", metavar="character")
+              help="length of the binning window in weeks", metavar="character"),
+  make_option(c("-nc", "--ncores"), type="integer", default=1, 
+              help="number of cores", metavar="character")
 ) 
 
 opt_parser = OptionParser(option_list=option_list)
 opt = parse_args(opt_parser)
+
+registerDoMC(cores = opt$ncores)
 
 # FUNCTION ----------------------------------------------------------------
 
@@ -95,7 +99,7 @@ aco.week <- plyr::ddply (det.ws, "date.week", function (det){
 aco.week %<>%
   mutate(tim = difftime(max(date.week),date.tag,  units = "days"), 
          tim = as.numeric(tim)) %>%
-  filter(tim > 7 * opt$window_length) %>%
+  filter(tim > (7 * opt$window_length)) %>%
   select(-tim)
 
 
