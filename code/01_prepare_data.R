@@ -10,6 +10,10 @@ library(dplyr)
 AL.DETECTIONS <- ReadInputData (
   read.csv ("./data/raw/AllDetections_Lith.csv"),
   iHoursToAdd = 3) %>% as_tibble()
+extra_detections <- ReadInputData(read.csv("./data/raw/2116 detections_Lith.csv"),
+                                  iHoursToAdd = 3, 
+                                  dateformat = "%d/%m/%y %H:%M")
+AL.DETECTIONS %<>% bind_rows(extra_detections)
 AL.DETECTIONS$DATETIME <- as.POSIXct (
   as.POSIXlt (AL.DETECTIONS$DATETIME, tz="Asia/Riyadh"))
 
