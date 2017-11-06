@@ -1,0 +1,12 @@
+
+data/\.DS_Store
+
+\.Rproj\.user/
+
+data/raw/\.DS_Store
+
+data/raw/~\$th Data Description\.docx
+
+\.RData
+
+\.Rhistory
