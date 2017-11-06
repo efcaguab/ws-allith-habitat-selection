@@ -75,10 +75,11 @@ names (det.ws) <- names (det.ws) %>% tolower ()  # change names to lower case
 # Table that contains tagged whale shark data
 ws.tags <- as_tibble(WS.TAGS)
 names (ws.tags) <- names (ws.tags) %>% tolower ()
-names (ws.tags)[2] <- "date.tag"
+names (ws.tags)[3] <- "date.tag"
 
 ws.tags %<>%
   mutate(ecocean = as.character(ecocean), 
+         id = as.character(shark),
          transmitterid = as.character(transmitterid),
          ecocean = if_else(is.na(ecocean), transmitterid, ecocean))
 
@@ -91,8 +92,8 @@ det.ws <- inner_join (det.ws, select (ws.tags, -(size), -(number)))
 # Clump in a weekly basis
 det.ws <- mutate (det.ws, date.week = cut (datetime, paste(opt$window_length, 'week')) %>% as.Date ())
 aco.week <- plyr::ddply (det.ws, "date.week", function (det){
-  sharks <- !duplicated (det$ecocean)
-  per.week <- data.frame (ecocean = det$ecocean[sharks], 
+  sharks <- !duplicated (det$id)
+  per.week <- data.frame (id = det$id[sharks], 
                           sex = det$sex[sharks],
                           batch = det$batch[sharks], 
                           date.tag = det$date.tag[sharks])
@@ -100,24 +101,32 @@ aco.week <- plyr::ddply (det.ws, "date.week", function (det){
 
 # aco.week <- aco.week %>% filter (batch == "2012-1" | batch == "2012-2")
 
-# remove individuals that were only tagged in the last week, because pff
-aco.week %<>%
-  mutate(tim = difftime(max(date.week),date.tag,  units = "days"), 
-         tim = as.numeric(tim)) %>%
-  filter(tim > (7 * opt$window_length)) %>%
-  select(-tim)
+# # remove individuals that were only tagged in the last week, because pff
+# aco.week %<>%
+#   mutate(tim = difftime(max(date.week),date.tag,  units = "days"), 
+#          tim = as.numeric(tim)) %>%
+#   filter(tim > (7 * opt$window_length)) %>%
+#   select(-tim)
 
 
 # Calculate probabilities
 PADet <- pres.abs.lag (start.date = min (aco.week$date.week), 
                        end.date = max (aco.week$date.week),
-                       sightings = aco.week$ecocean, 
+                       sightings = aco.week$id, 
                        dates = aco.week$date.week)
 # Change "id" column to "ecocean"
-names (PADet)[5] <- "ecocean"
+# names (PADet)[5] <- "ecocean"
+
+
 
 # Put shark info back into the data-frame
-PADet <- left_join (PADet, ws.tags %>% select (ecocean, sex, size, batch))
+PADet <- ws.tags %>% 
+  group_by(id) %>%
+  arrange(batch) %>%
+  summarise(sex = sex[1], 
+            size = mean(size, na.rm = T), 
+            batch = batch[1]) %>% 
+  right_join (PADet)
 
 
 # CALCULATE EFFORT --------------------------------------------------------
@@ -171,6 +180,6 @@ PADet <- inner_join (PADet, pres %>% select (date.2, nStations_inshore, nStation
   mutate (week.1 = lubridate::week (date.1), 
           week.2 = lubridate::week (date.2), 
           date.random = (as.numeric (date.1) - as.numeric (min (date.1))) / 7, 
-          date.id = paste (date.1, ecocean))
+          date.id = paste (date.1, id))
 
 saveRDS(PADet, "./data/processed/probability_acoustic_detection.rds")
