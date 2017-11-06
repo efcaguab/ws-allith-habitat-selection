@@ -43,18 +43,23 @@ pres.abs.lag <- function (start.date, end.date, sightings, dates){
       # Establish all dates in which it was tagged (only dates in which there was monitoring)
       dates.tagged <- unique(sight$date)[unique(sight$date) >= 
                                            sight$date[match (individuals[i], sight$id)]]
-      # Find all possible combinations of dates in which it was tagged
-      dates.comb <- as.data.frame (t (combn (dates.tagged, 2))) %>%
-        tbl_df()
-      names (dates.comb) <- c ("date.1", "date.2")
-      dates.comb <- mutate (dates.comb, lag = date.2 - date.1, # Find the lag between given dates
-                            # Establish if it was present for in that lag
-                            present = (date.1 %in% dates.present) &
-                              (date.2 %in% dates.present), 
-                            date.1 = as.Date(date.1, origin = "1970-01-01"), 
-                            date.2 = as.Date(date.2, origin = "1970-01-01"), 
-                            id = individuals[i])
-      return (dates.comb)
+      if(length(dates.tagged)>1) {
+        # Find all possible combinations of dates in which it was tagged
+        dates.comb <- as.data.frame (t (combn (dates.tagged, 2))) %>%
+          tbl_df()
+        names (dates.comb) <- c ("date.1", "date.2")
+        dates.comb <- mutate (dates.comb, lag = date.2 - date.1, # Find the lag between given dates
+                              # Establish if it was present for in that lag
+                              present = (date.1 %in% dates.present) &
+                                (date.2 %in% dates.present), 
+                              date.1 = as.Date(date.1, origin = "1970-01-01"), 
+                              date.2 = as.Date(date.2, origin = "1970-01-01"), 
+                              id = individuals[i])
+        return (dates.comb)
+      } else {
+        return(NULL)
+      }
+      
     }
   return (presence.absence)
 }
