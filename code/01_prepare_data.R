@@ -24,7 +24,6 @@ WS.TAGS <- read.csv ("./data/raw/WSTags_Lith.csv")
 
 # CORRECT TIME DRIFT ------------------------------------------------------
 
-# To be done by Jesse
 names (RECEIVER.EVENTS) <- c ("DATETIME", "RECEIVERID", "DESC", "DATA", "UNITS")
 RECEIVER.EVENTS$DATETIME <- as.POSIXct (RECEIVER.EVENTS$DATETIME, 
                                         format = "%m/%d/%Y %H:%M", tz ="UTC")
@@ -49,29 +48,34 @@ PC.TIMES %<>% as.tibble() %>%
 # required manual corrections
 
 PC.TIMES %<>% 
-  mutate(DATETIME = if_else(DATETIME == as.POSIXct ("2015-11-21 12:52:00") & RECEIVERID == "VR2W-104854", DATETIME - 3600*9, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2015-07-20 20:09:00") & RECEIVERID == "VR2W-103917", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2015-07-21 20:00:00") & RECEIVERID == "VR2W-109032", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 16:29:00") & RECEIVERID == "VR2W-113043", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-08-30 16:59:00") & RECEIVERID == "VR2W-104854", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 17:14:00") & RECEIVERID == "VR2W-114060", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 17:38:00") & RECEIVERID == "VR2W-114055", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 17:24:00") & RECEIVERID == "VR2W-114059", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 15:49:00") & RECEIVERID == "VR2W-113039", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 14:55:00") & RECEIVERID == "VR2W-114058", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 16:56:00") & RECEIVERID == "VR2W-113041", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2015-07-21 20:00:00") & RECEIVERID == "VR2W-109032", DATETIME - 3600*6, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-08-30 07:42:00") & RECEIVERID == "VR2W-113484", DATETIME - 3600*3, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-08-30 08:37:00") & RECEIVERID == "VR2W-104848", DATETIME - 3600*3, DATETIME),
-         DATETIME = if_else(DATETIME == as.POSIXct ("2011-08-30 12:06:00") & RECEIVERID == "VR2W-105789", DATETIME + 3600*3, DATETIME))
+  mutate(DATETIME = if_else(DATETIME == as.POSIXct ("2015-11-21 12:52:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-104854", DATETIME - 3600*9, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2015-07-20 20:09:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-103917", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2015-07-21 20:00:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-109032", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 16:29:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-113043", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-08-30 16:59:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-104854", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 17:14:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-114060", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 17:38:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-114055", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 17:24:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-114059", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 15:49:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-113039", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 14:55:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-114058", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-06-24 16:56:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-113041", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2015-07-21 20:00:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-109032", DATETIME - 3600*6, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-08-30 07:42:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-113484", DATETIME - 3600*3, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-08-30 08:37:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-104848", DATETIME - 3600*3, DATETIME),
+         DATETIME = if_else(DATETIME == as.POSIXct ("2011-08-30 12:06:00", tz = "Asia/Riyadh") & RECEIVERID == "VR2W-105789", DATETIME + 3600*3, DATETIME)) %>%
+  filter(DATETIME > as.POSIXct("2009-01-01"))
+
+AL.DETECTIONS %<>% 
+  filter(DATETIME > as.POSIXct("2009-01-01"))
 
 # Correct time drift 
-receiverIDs <- levels (AL.DETECTIONS$RECEIVERID)
+receiverIDs <- unique (PC.TIMES$RECEIVERID)
 #pb <- txtProgressBar(max=length (receiverIDs), style = 3)
 for (i in 1:length (receiverIDs)){
-  #setTxtProgressBar (pb, i)
+  # message(i, receiverIDs[i])
+  # setTxtProgressBar (pb, i)
   receiver.PC.TIMES <- PC.TIMES[PC.TIMES$RECEIVERID == receiverIDs[i], ]
-  drift <- approx (receiver.PC.TIMES$DATA, receiver.PC.TIMES$DATA - receiver.PC.TIMES$DATETIME, AL.DETECTIONS[AL.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME)$y
+  drift <- approx (receiver.PC.TIMES$DATA, receiver.PC.TIMES$DATA - receiver.PC.TIMES$DATETIME, AL.DETECTIONS[AL.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME, rule = 2)$y
   AL.DETECTIONS[AL.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME <- AL.DETECTIONS[AL.DETECTIONS$RECEIVERID == receiverIDs[i], ]$DATETIME + drift
 }
 
@@ -125,7 +129,7 @@ AL.DETECTIONS <- AL.DETECTIONS %>% filter (STATIONNAME != "Unknown", !is.na (STA
 
 # Read file with Whale Shark Tag lists
 WS.TAGS$DATE <- as.POSIXct (WS.TAGS$DATE, format="%m/%d/%Y", tz = "Asia/Riyadh")
-WS.TAGS$NAME <- WS.TAGS$COMMENT <- WS.TAGS$SHARK <- NULL
+WS.TAGS$NAME <- WS.TAGS$COMMENT <- NULL
 
 # account for transmitter that was used to tag two different sharks: A69-9002-2673
 WS.TAGS %<>%
