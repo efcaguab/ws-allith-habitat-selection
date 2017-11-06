@@ -1,12 +1,10 @@
-
-data/\.DS_Store
-
-\.Rproj\.user/
-
-data/raw/\.DS_Store
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
 
 data/raw/~\$th Data Description\.docx
 
-\.RData
+data/\.DS_Store
 
-\.Rhistory
+data/raw/\.DS_Store
