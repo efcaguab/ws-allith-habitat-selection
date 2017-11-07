@@ -1,0 +1,357 @@
+Date,Shark ID,Location,Sex,Length,Time,ID method,note,ID Photo
+21-Mar-10,UT_001,WS reef,M,3.5,NA,photo,initial sighting,B
+21-Mar-10,UT_002,WS reef,UK,4,NA,photo,initial sighting,B
+27-Mar-10,WS_001,WS reef,UK,3.75,10:10,photo,initial tag,R
+28-Mar-10,WS_002,WS reef,UK,5.75,12:14,photo,initial tag,B
+28-Mar-10,WS_003,WS reef,UK,4.5,12:37,tag,initial tag,L
+28-Mar-10,WS_004,WS reef,UK,4,13:19,tag,initial tag,T
+29-Mar-10,WS_005,WS reef,UK,4,15:28,photo,initial tag,R
+29-Mar-10,WS_008,WS reef,F,3,NA,photo,initial tag,B
+29-Mar-10,WS_107,WS Reef,F,4,6:19,photo,resight,B
+29-Mar-10,WS_006,WS reef,UK,NA,NA,tag,initial tag,T
+29-Mar-10,WS_007,WS reef,UK,4.25,16:45,tag,initial tag,L
+29-Mar-10,WS_009,WS reef,UK,5,NA,tag,initial tag,L
+30-Mar-10,WS_010,WS reef,UK,NA,9:46,tag,initial tag,T
+30-Mar-10,WS_011,WS reef,UK,NA,10:25,tag,initial tag,L
+4-Apr-10,UT_005,WS reef,UK,4,NA,photo,initial sighting,L
+4-Apr-10,WS_012,Canyon,UK,4,14:05,photo,initial tag,B
+4-Apr-10,WS_013,WS reef,UK,3,17:05,photo,initial tag,B
+8-Apr-10,UT_006,WS reef,UK,2.75,NA,photo,initial sighting,B
+9-Apr-10,WS_042,WS reef,M,3,NA,photo,initial sighting,B
+12-Apr-10,WS_014,WS reef,M,3.5,16:05,photo,initial tag,B
+12-Apr-10,WS_015,WS reef,F,4,16:30,tag,initial tag,B
+12-Apr-10,WS_016,WS reef,M,5,17:00,photo,initial tag,B
+12-Apr-10,WS_019,WS reef,F,3,18:19,photo,initial tag,B
+12-Apr-10,WS_020,WS reef,F,4,18:30,photo,initial tag,R
+12-Apr-10,WS_017,WS reef,M,4,17:07,tag,initial tag,T
+12-Apr-10,WS_018,WS reef,F,5,17:50,tag,initial tag,L
+15-Apr-10,WS_014,WS reef,M,3.5,16:12,photo,resight,B
+15-Apr-10,WS_019,WS reef,F,3,12:30,photo,resight,B
+15-Apr-10,WS_021,WS reef,M,2.75,10:09,photo,initial tag,R
+15-Apr-10,WS_022,WS reef,F,5-6,11:36,photo,initial tag,B
+15-Apr-10,WS_023,WS reef,M,6-7,14:49,photo,initial tag,R
+15-Apr-10,WS_025,WS reef,F,4,18:05,photo,initial tag,R
+15-Apr-10,WS_032,WS reef,UK,NA,16:08,photo,initial tag,B
+15-Apr-10,WS_046,WS reef,M,3,NA,photo,initial sighting,B
+16-Apr-10,UT_025,WS reef,M,6-7,13:34,photo,initial sighting,B
+16-Apr-10,WS_026,WS reef,F,6,8:40,photo,initial tag,B
+16-Apr-10,WS_027,WS reef,UK,3.25,8:45,photo,initial tag,B
+16-Apr-10,WS_028,WS reef,M,4,9:11,photo,initial tag,B
+16-Apr-10,WS_029,WS reef,F,7,9:24,photo,initial tag,B
+16-Apr-10,WS_033,WS reef,F,4,14:11,photo,initial tag,B
+22-Apr-10,WS_034,WS reef,M,3,NA,photo,initial tag,B
+22-Apr-10,WS_035,WS reef,M,3,8:25,photo,initial tag,R
+22-Apr-10,WS_036,WS reef,M,3.5,8:32,photo,initial tag,B
+22-Apr-10,WS_037,WS reef,M,7,8:49,photo,initial tag,R
+22-Apr-10,WS_038,WS reef,F,3,17:16,photo,initial tag,B
+23-Apr-10,WS_015,WS reef,F,4,NA,photo,resight,B
+23-Apr-10,WS_035,WS reef,M,3,NA,photo,resight,B
+24-Apr-10,UT_011,WS reef,F,3.5,9:00,photo,initial sighting,L
+25-Apr-10,UT_011,WS reef,F,4.5,8:45,photo,initial sighting,L
+25-Apr-10,WS_024,WS reef,F,3,NA,photo,initial sighting,B
+26-Apr-10,UT_014,WS reef,F,4.5,8:45,photo,initial sighting,B
+27-Apr-10,UT_018,WS reef,M,4,11:35,photo,initial sighting,L
+27-Apr-10,UT_015,WS reef,F,4.5,9:20,photo,initial sighting,B
+27-Apr-10,WS_033,WS reef,F,4,NA,Photo,resight,B
+27-Apr-10,WS_039,WS reef,F,4.5,10:00,Photo,initial tag,R
+27-Apr-10,WS_046,WS reef,M,3,NA,photo,resight,B
+28-Apr-10,WS_015,WS reef,F,4,NA,Photo,resight,B
+28-Apr-10,WS_025,WS reef,F,4,NA,Photo,resight,R
+28-Apr-10,WS_038,WS reef,F,3,NA,Photo,resight,B
+28-Apr-10,WS_040,WS reef,M,4,8:45,Photo,initial tag,B
+30-Apr-10,WS_008,WS reef,F,3,8:46,Photo,resight,B
+30-Apr-10,WS_041,WS reef,F,4,9:00,Photo,initial tag,R
+1-May-10,WS_045,WS reef,M,3.5,NA,Photo,initial sighting,R
+3-May-10,UT_021,WS reef,F,3.75,9:40,Photo,initial sighting,B
+4-May-10,WS_008,WS reef,F,3,NA,Photo,resight,B
+4-May-10,WS_024,WS reef,F,3,7:45,Photo,initial tag,B
+4-May-10,WS_030,WS reef,M,3,8:30,Photo,initial tag,B
+4-May-10,WS_031,WS reef,M,3.5,9:15,Photo,initial tag,B
+4-May-10,WS_042,WS reef,M,3,8:00,Photo,initial tag,B
+5-May-10,WS_024,WS reef,F,3,NA,Photo,resight,B
+7-May-10,WS_505,WS reef,F,3.5,7:45,Photo,initial sighting,R
+7-May-10,UT_024,WS reef,F,3.5,18:00,Photo,initial sighting,B
+7-May-10,WS_008,WS reef,F,3,NA,Photo,resight,B
+7-May-10,WS_043,WS reef,F,3.5,18:15,Photo,initial tag,R
+7-May-10,WS_103,WS Reef,M,4,7:16,Photo,resight,B
+11-May-10,WS_024,WS reef,F,3,NA,Photo,resight,B
+11-May-10,WS_042,WS reef,M,3,NA,Photo,resight,B
+11-May-10,WS_044,WS reef,F,4.25,9:25,Photo,initial tag,B
+11-May-10,WS_045,WS reef,M,3.5,16:34,Photo,initial tag,R
+12-May-10,WS_024,WS reef,F,3,NA,Photo,resight,B
+12-May-10,WS_031,WS reef,M,3.5,11:16,Photo,resight,B
+12-May-10,WS_042,WS reef,M,3,NA,Photo,resight,B
+12-May-10,WS_045,WS reef,M,3.5,NA,Photo,resight,R
+12-May-10,WS_046,WS reef,M,3,11:16,Photo,initial tag,B
+14-May-10,WS_047,Abu Lat,UK,4.5,15:20,Photo,initial tag,R
+30-Mar-11,WS_102,WS Reef,F,5,17:25,Photo,initial tag,B
+30-Mar-11,WS_103,WS Reef,M,4,7:57,Photo,resight,B
+31-Mar-11,WS_020,WS Reef,UK,NA,8:52,photo,resight,R
+31-Mar-11,WS_103,WS Reef,M,4,7:57,tag,initial tag,B
+31-Mar-11,WS_104,On route to Canyon,F,3,11:40,tag,initial tag,B
+1-Apr-11,UT_101,WS Reef,F,3,16:16,photo,initial sighting,B
+1-Apr-11,WS_103,WS Reef,M,4,16:58,photo,resight,B
+2-Apr-11,WS_106,WS Reef,UK,NA,17:24,tag,initial tag,L
+2-Apr-11,WS_105,WS Reef,M,NA,16:53,photo,initial tag,B
+2-Apr-11,WS_107,WS Reef,F,4,17:24,photo,initial tag,B
+4-Apr-11,WS_031,WS Reef,M,3.5,17:59,photo,resight,B
+4-Apr-11,WS_107,WS Reef,F,4,17:01,photo,resight,B
+4-Apr-11,WS_108,WS Reef,F,4.5,17:37,photo,initial tag,R
+5-Apr-11,WS_020,WS Reef,UK,NA,16:03,photo,resight,R
+5-Apr-11,WS_031,WS Reef,M,3.5,16:03,photo,resight,B
+5-Apr-11,WS_102 ,WS Reef,F,5,16:34,tag,resight,B
+5-Apr-11,WS_108,WS Reef,F,4.5,17:26,photo,resight,R
+6-Apr-11,WS_031,WS Reef,M,3.5,8:19,tag,resight,B
+6-Apr-11,WS_103,WS Reef,M,4,16:48,tag,resight,B
+6-Apr-11,WS_108,WS Reef,F,4.5,16:31,tag,resight,R
+7-Apr-11,WS_020,WS Reef,UK,NA,17:04,tag,resight,R
+7-Apr-11,WS_109,WS Reef,F,4,16:54,photo,initial tag,B
+7-Apr-11,WS_110,WS Reef,F,4.5,17:34,photo,initial tag,B
+13-Apr-11,UT_107,WS Reef,UK,NA,16:45,photo,initial sighting,R
+13-Apr-11,UT_108,WS Reef,UK,NA,16:45,photo,initial sighting,R
+13-Apr-11,WS_111,WS Reef,M,4,17:29,photo,initial tag,B
+14-Apr-11,WS_115,WS Reef,F,4,16:43,tag,initial tag,T
+14-Apr-11,WS_116,WS Reef,F,4,16:57,tag,initial tag,L
+14-Apr-11,UT_109,WS Reef,UK,NA,8:49,photo,initial sighting,B
+14-Apr-11,WS_107,WS Reef,F,4,8:32,photo,resight,B
+14-Apr-11,WS_112,WS Reef,M,5,8:45,photo,initial tag,B
+14-Apr-11,WS_113,WS Reef,M,NA,8:50,photo,initial tag,R
+14-Apr-11,WS_114,WS Reef,F,3.5,16:43,photo,initial tag,R
+15-Apr-11,WS_116,WS Reef,F,4,8:23,photo,resight,L
+15-Apr-11,WS_027,WS reef,UK,3.25,8:23,photo,resight,B
+15-Apr-11,WS_103,WS Reef,M,4,16:38,photo,resight,B
+15-Apr-11,WS_107,WS Reef,F,4,8:28,photo,resight,B
+15-Apr-11,WS_111,WS Reef,M,4,16:46,photo,resight,B
+15-Apr-11,WS_112,WS Reef,M,5,16:46,photo,resight,B
+15-Apr-11,WS_117,WS Reef,M,3.5,7:55,photo,initial tag,B
+16-Apr-11,WS_027,WS reef,UK,3.25,18:19,photo,resight,B
+16-Apr-11,WS_032,WS Reef,UK,NA,9:47,photo,resight,B
+16-Apr-11,WS_033,WS Reef,F,4,8:12,photo,resight,B
+16-Apr-11,WS_103,WS Reef,M,4,18:19,photo,resight,B
+16-Apr-11,WS_107,WS Reef,F,4,9:47,photo,resight,B
+17-Apr-11,WS_118,WS Reef,UK,3,18:03,tag,initial tag,L
+17-Apr-11,WS_014,WS Reef,M,3.5,7:31,photo,resight,B
+17-Apr-11,WS_103,WS Reef,M,4,8:09,photo,resight,B
+17-Apr-11,WS_117,WS Reef,M,3.5,8:59,photo,resight,B
+18-Apr-11,WS_033,WS Reef,F,4,18:15,photo,resight,B
+18-Apr-11,WS_103,WS Reef,M,4,7:30,photo,resight,B
+18-Apr-11,WS_107,North-east of WS Reef,F,4,7:30,photo,resight,B
+18-Apr-11,WS_119,WS Reef,M,4,9:22,tag,initial tag,T
+19-Apr-11,WS_107,WS Reef,F,4,17:33,photo,resight,B
+19-Apr-11,WS_112,WS Reef,M,5,17:33,photo,resight,B
+19-Apr-11,WS_120,WS Reef,F,3.5,8:31,photo,initial tag,B
+19-Apr-11,WS_121,WS Reef,F,3.5,10:05,tag,initial tag,T
+19-Apr-11,WS_122,WS Reef,UK,3,16:39,tag,initial tag,T
+19-Apr-11,WS_123,WS Reef,M,3.5,17:47,tag,initial tag,T
+20-Apr-11,UT_103,WS Reef,UK,NA,16:45,photo,initial sighting,B
+20-Apr-11,UT_104,WS Reef,M,3.5,17:50,photo,initial sighting,B
+20-Apr-11,WS_014,WS Reef,M,3.5,9:28,photo,resight,B
+20-Apr-11,WS_025,WS Reef,F,4,8:52,Photo,resight,R
+20-Apr-11,WS_103,WS Reef,M,4,18:25,photo,resight,B
+20-Apr-11,WS_104,WS Reef,F,3,15:15,photo,resight,B
+20-Apr-11,WS_107,WS Reef,F,4,9:27,photo,resight,B
+20-Apr-11,WS_109,WS Reef,F,4,9:12,photo,resight,B
+20-Apr-11,WS_120,WS Reef,F,3.5,8:16,photo,resight,B
+20-Apr-11,WS_126,WS Reef,M,3,18:33,photo,initial sighting,B
+20-Apr-11,WS_124,WS Reef,M,4.5,8:40,photo,initial tag,B
+21-Apr-11,WS_110,WS Reef,F,4.5,9:36,photo,resight,B
+22-Apr-11,WS_025,WS Reef,F,4,9:05,photo,resight,B
+22-Apr-11,WS_031,WS Reef,M,3.5,10:49,photo,resight,B
+22-Apr-11,WS_107,WS Reef,F,4,8:37,photo,resight,B
+22-Apr-11,WS_126,WS Reef,M,3,8:09,photo,initial tag,B
+22-Apr-11,WS_127,WS Reef,F,5.5,8:50,photo,initial tag,B
+22-Apr-11,WS_121,WS Reef,F,3.5,9:05,photo,resight,T
+22-Apr-11,WS_123,WS Reef,M,3.5,9:53,photo,resight,T
+22-Apr-11,WS_128,WS Reef,UK,3.5,8:50,tag,initial tag,T
+26-Apr-11,WS_129,WS Reef,M,4.5,10:00,tag,initial tag,T
+26-Apr-11,WS_130,WS Reef,F,3.5,17:30,tag,initial tag,T
+27-Apr-11,WS_131,WS Reef,F,3,8:20,tag,initial tag,T
+27-Apr-11,WS_025,WS Reef,F,NA,NA,photo,resight,B
+27-Apr-11,UT_111,WS Reef,UK,NA,NA,photo,intial sighting,R
+16-Mar-12,UT_201,WS Reef,F,5,8:15,photo,initial sighting,B
+16-Mar-12,WS_015,WS Reef,F,3,8:00,photo,resight,B
+16-Mar-12,WS_202,WS Reef,M,5,8:00,photo,initial tag,B
+16-Mar-12,WS_203,WS Reef,M,3,8:15,photo,initial tag,B
+23-Mar-12,WS_015,WS Reef,F,3,10:00,photo,resight,B
+29-Mar-12,WS_204,WS Reef,M,3,8:25,photo,initial tag,B
+6-Apr-12,WS_020,WS Reef,UK,4,8:24,photo,initial tag,B
+12-Apr-12,WS_033,WS Reef,F,4,7:39,photo,resight,B
+18-Apr-12,WS_103,WS Reef,M,4,9:00,photo,resight,B
+19-Apr-12,WS_120,WS Reef,F,4,8:57,photo,resight,B
+19-Apr-12,WS_205,WS Reef,UK,3,9:35,photo,initial tag,B
+19-Apr-12,WS_206,WS Reef,M,3.5,9:57,photo,initial tag,B
+19-Apr-12,WS_207,Shib Sulyme,F,3,16:38,photo,initial tag,B
+19-Apr-12,WS_208,WS Reef,F,4,17:46,photo,initial tag,B
+20-Apr-12,WS_104,WS Reef,F,3.5,7:44,photo,initial tag,B
+20-Apr-12,WS_206,WS Reef,M,3.5,7:44,photo,initial tag,B
+3-May-12,WS_209,WS Reef,F,4,8:20,photo,initial tag,B
+3-May-12,WS_210,WS Reef,UK,NA,9:05,photo,initial tag,B
+3-May-12,WS_211,On route to Brown,M,4.5,12:15,photo,initial tag,B
+4-May-12,WS_033,WS Reef,F,3,8:30,photo,double tag,B
+4-May-12,WS_015,WS Reef,F,3,11:00,photo,resight,B
+4-May-12,WS_212,WS Reef,F,4,8:45,photo,initial tag,B
+4-May-12,UT_202,WS Reef,F,NA,NA,photo,intial sighting,B
+4-May-12,UT_203,WS Reef,UK,NA,NA,photo,intial sighting,R
+21-Mar-13,WS_104,WS Reef,F,4,16:30,photo,resight,B
+22-Mar-13,UT_103,WS Reef,F,4,8:30,photo,resight,B
+22-Mar-13,UT_301,WS Reef,F,NA,13:28,photo,initial sighting,B
+22-Mar-13,WS_028,WS Reef,M,4,13:40,photo,resight,B
+22-Mar-13,WS_209,WS Reef,F,4,13:25,photo,resight,B
+29-Mar-13,WS_402,WS Reef,F,NA,7:48,photo,initial sighting,B
+30-Mar-13,UT_303,WS Reef,F,NA,17:23,photo,initial sighting,B
+30-Mar-13,WS_204 ,WS Reef,M,NA,NA,Photo,resight,B
+4-Apr-13,UT_304,Saut,M,NA,15:18,photo,initial sighting,B
+4-Apr-13,UT_305,Saut,F,NA,15:43,photo,initial sighting,B
+4-Apr-13,UT_306,Saut,F,NA,16:00,photo,initial sighting,B
+4-Apr-13,WS_028,WS Reef,M,4,10:55,photo,resight,B
+17-Apr-13,UT_307,WS Reef,F,NA,11:50,photo,initial sighting,B
+17-Apr-13,UT_308,WS Reef,F,NA,12:00,photo,initial sighting,R
+25-Apr-13,UT_309,Saut,UK,NA,5:00,photo,initial sighting,B
+25-Apr-13,UT_310,Saut,UK,NA,5:10,photo,initial sighting,B
+25-Apr-13,WS_509 ,Saut,UK,NA,5:15,photo,initial sighting,B
+25-Apr-13,UT_312,Saut,UK,NA,5:20,photo,initial sighting,B
+2-May-13,UT_313,WS Reef,F,4,7:29,photo,initial sighting,B
+2-May-13,UT_314,WS Reef,UK,NA,16:18,photo,initial sighting,R
+21-Mar-14,UT_401,WS Reef,F,4,NA,photo,initial sighting,B
+23-Mar-14,WS_033,WS Reef,F,5,NA,Photo,resight,B
+25-Mar-14,WS_107,WS Reef,F,5,NA,photo,initial sighting,B
+25-Mar-14,WS_127,WS Reef,F,6,NA,photo,retag,B
+4-Apr-14,WS_112,WS Reef,M,5,NA,photo,resight,B
+6-Apr-14,UT_404,WS Reef,M,5.5,NA,photo,initial sighting,B
+6-Apr-14,UT_405,WS Reef,UK,NA,NA,photo,initial sighting,B
+11-Apr-14,UT_404,WS Reef,M,5.5,NA,photo,initial sighting,B
+11-Apr-14,UT_406,WS Reef,M,5,NA,photo,initial sighting,B
+11-Apr-14,UT_407,WS Reef,M,4.5,NA,photo,initial sighting,B
+11-Apr-14,WS_401,WS Reef,UK,6.5,NA,photo,initial tag,B
+11-Apr-14,WS_402,WS Reef,F,4.5,NA,photo,initial tag,R
+12-Apr-14,UT_404,WS Reef,M,5.5,NA,photo,initial sighting,B
+12-Apr-14,UT_408,WS Reef,F,4,NA,photo,initial sighting,B
+12-Apr-14,WS_403,WS Reef,UK,4.5,NA,photo,initial tag,R
+17-Apr-14,WS_112,WS Reef,M,5,NA,photo,resight,B
+18-Apr-14,WS_603,WS Reef,M,5,NA,photo,initial sighting,L
+18-Apr-14,UT_404,WS Reef,M,5.5,NA,photo,initial sighting,B
+18-Apr-14,UT_410,WS Reef,M,6,NA,photo,initial sighting,B
+18-Apr-14,WS_033,WS Reef,F,5,NA,photo,resight,B
+19-Apr-14,UT_406,WS Reef,M,5,NA,photo,resight,B
+19-Apr-14,UT_411,WS Reef,UK,4.5,NA,photo,initial sighting,R
+19-Apr-14,UT_412,WS Reef,UK,5,NA,photo,initial sighting,B
+20-Apr-14,UT_406,WS Reef,M,5,NA,photo,resight,B
+20-Apr-14,UT_412,WS Reef,UK,5,NA,photo,resight,B
+26-Apr-14,WS_404,WS Reef,F,5,NA,photo,initial tag,B
+17-Mar-15,UT_501,S open ocean fish farm,M,4m,8:30,photo,initial sighting ,B
+20-Mar-15,UT_502 ,WS Reef,F,4m,NA,photo,initial sighting ,R
+20-Mar-15,UT_202,WS Reef,F,5m,NA,photo,resight,B
+20-Mar-15,WS_603,WS Reef,M,NA,NA,photo,resight,R
+20-Mar-15,UT_504,WS Reef,F,NA,NA,photo,initial sighting ,B
+20-Mar-15,UT_505,WS Reef,UK,NA,NA,photo,initial sighting ,B
+20-Mar-15,UT_506,WS Reef,M,NA,NA,photo,initial sighting ,R
+20-Mar-15,WS_032,WS Reef,M,NA,NA,photo,resight,B
+20-Mar-15,WS_505,WS Reef,F,4.5,NA,photo,resight,L
+21-Mar-15,UT_502 ,WS Reef,F,4m,NA,photo,initial sighting ,R
+21-Mar-15,WS_603,WS Reef,M,NA,NA,photo,resight,L
+21-Mar-15,UT_505,WS Reef,UK,NA,NA,photo,initial sighting ,R
+21-Mar-15,WS_033,WS Reef,F,5,NA,photo,resight,R
+25-Mar-15,UT_507 ,WS Reef,UK,NA,NA,photo,initial sighting ,B
+25-Mar-15,WS_402,WS Reef ,F,NA,NA,photo,resight ,B 
+25-Mar-15,UT_517,WS Reef,UK,NA,NA,photo,initial sighting ,L
+25-Mar-15,UT_518,WS Reef,UK,NA,NA,photo,initial sighting,R
+4-Apr-15,UT_407,WS Reef ,M,4.5,9:00,photo,resight,B
+5-Apr-15,WS_033,WS Reef ,F ,5,7:45,photo,resight,B
+7-Apr-15,UT_507 ,WS Reef ,UK,NA,4:30,photo ,initial sighting ,B
+17-Apr-15,WS_501,WS Reef ,F ,5,7:30,photo ,initial sighting ,B
+17-Apr-15,UT_405,WS Reef ,UK,NA,8:35,photo,resight ,R 
+17-Apr-15,WS_603,WS Reef (S) ,M,NA,9:35,photo,resight ,R
+17-Apr-15,WS_502,WS Reef ,M,6,NA,photo,intial sighting ,B
+18-Apr-15,UT_513,WS Reef (N),M,4,NA,photo,initial sighting ,B
+18-Apr-15,UT_503,WS Reef (Central),F,4.5,10:20,photo,intial sighting ,B
+19-Apr-15,WS_501,WS Reef ,F ,5,NA,photo,intial tag,B
+19-Apr-15,UT_513,WS Reef ,M,4,NA,photo,resight ,R
+19-Apr-15,WS_505,WS Reef,F ,4.5,NA,photo,resight,B
+19-Apr-15,WS_502,WS Reef,M ,6,NA,photo,initial tag ,B
+25-Apr-15,UT_508,WS Reef ,F ,5,8:30,photo,intial sighting ,B 
+25-Apr-15,UT_509,WS Reef ,M,5.5,8:30,photo,initial sighting ,B 
+25-Apr-15,UT_510,WS Reef,M,5.5,8:30,photo,initial sighting ,B 
+25-Apr-15,WS_501 ,WS Reef ,F ,5,9:10,Photo ,resight ,B 
+25-Apr-15,UT_516,WS Reef ,UK,NA,10:15,photo,initial sighting ,R
+25-Apr-15,WS_510 ,WS Reef ,M,3.5,11:00,photo ,initial sighting ,B
+26-Apr-15,WS_507,WS Reef ,M,6,9:30,photo,initial sighting ,B
+27-Apr-15,WS_402 ,WS Reef ,F ,NA,7:20,photo,resight,B 
+28-Apr-15,WS_402,WS Reef (N),F,NA,7:25,photo ,resight ,B
+28-Apr-15,WS_503,WS Reef ,M,5,7:30,photo ,initial tag,B 
+28-Apr-15,WS_504 ,WS Reef ,M,4.5,10:15,photo,initial tag,B 
+28-Apr-15,WS_505 ,WS Reef ,F,4.5,11:00,photo ,initial tag,B
+28-Apr-15,WS_506,WS Reef ,F,6,11:00,photo,initial tag,R
+28-Apr-15,WS_507,WS Reef ,M,6,16:50,photo ,initial tag,B 
+28-Apr-15,UT_510,WS Reef ,M,5.5,18:30,photo ,resight ,B 
+29-Apr-15,WS_505,WS Reef (N),F ,4.5,8:15,photo ,resight ,R
+29-Apr-15,UT_511,WS Reef ,F ,6,8:15,photo ,initial sighting ,B 
+29-Apr-15,UT_513,WS Reef ,M,4,8:15,photo,resight,R
+30-Apr-15,UT_512,WS Reef (N),M,3.5,8:20,photo ,initial sighting ,R
+30-Apr-15,WS_508,WS Reef ,M,3.5,8:30,photo ,initial tag,B 
+1-May-15,WS_402,WS Reef,F,NA,8:30,photo ,resight,B
+1-May-15,WS_507,WS Reef,M,6,NA,photo,resight,B
+2-May-15,UT_513,WS Reef ,M,4,8:25,photo ,resight,B 
+2-May-15,WS_509 ,WS Reef,UK,NA,8:25,photo,initial tag,B
+5-May-15,WS_107,WS Reef ,F,NA,NA,photo ,resight ,B 
+5-May-15,UT_511,WS Reef,F,6,NA,photo,resight,B
+8-May-15,WS_603 ,WS Reef ,M,NA,NA,photo ,resight ,R 
+8-May-15,WS_505,WS Reef ,F ,4.5,NA,photo ,resight ,B
+8-May-15,WS_033,WS Reef ,F ,5,NA,photo ,resight ,B 
+8-May-15,UT_515,WS Reef,M ,NA,NA,photo,initial sighting ,B
+8-May-15,WS_402,WS Reef,F,NA,NA,photo,resight,B
+9-May-15,WS_510,WS Reef ,M,3.5,NA,photo ,initial tag,B 
+10-May-15,UT_514,WS Reef ,F ,NA,NA,photo ,initial sighting ,B 
+14-May-15,WS_508,WS Reef ,M,3.5,NA,photo ,resight ,B 
+18-Mar-16,WS_403,CSH,M ,4m,15:30,photo,resight,B
+18-Mar-16,UT_601,CSH,F,3m,15:30,photo,intial sight,R
+19-Mar-16,WS_505,CSH,F,4m ,16:00,photo,resight,B
+19-Mar-16,UT_601,CSH,F,3m,16:00,photo,resight,B
+19-Mar-16,WS_601,CSH,M ,4m,16:00,photo,initial sight,B
+24-Mar-16,WS_603,NSH,M ,4.5m,8:20,photo,resight,L
+24-Mar-16,WS_505,NSH,F,4m,NA,photo,resight,B
+26-Mar-16,WS_603,NSH,M ,4.5m ,8:10,clip ,resight,T
+26-Mar-16,WS_107,NSH,F,5m,8:38,photo,resight,R
+26-Mar-16,WS_605,NSH,UK,4.5m ,8:38,photo,initial sight,R
+26-Mar-16,WS_603,CSH,M ,4.5m,11:20,photo,resight,R
+31-Mar-16,WS_107,NSH,F,5m,7:40,photo,re-tag,B
+31-Mar-16,WS_603,NSH,M ,4.5m,7:40,photo,initial tag,L
+31-Mar-16,WS_035,NSH,M ,5.5m ,8:06,photo,re-tag,B
+31-Mar-16,WS_604,CSH,M ,7m,1:48,photo,initial tag/sight,B
+31-Mar-16,WS_035,CSH,M ,5.5m ,1:48,photo,resight,L
+1-Apr-16,WS_605,NSH,F,4.5m ,NA,photo,resight,B
+2-Apr-16,WS_107,CSH,F,5m,8:45,photo,resight,B
+3-Apr-16,WS_605,NSH ,F,4m ,8:20,photo,initial tag,B
+4-Apr-16,WS_605,NSH,F,4.5m ,8:09,photo,resight,B
+4-Apr-16,WS_606,NSH,M,3.5m ,8:47,photo,initial tag/sight,B
+8-Apr-16,WS_507,NSH,M,5.5m,8:45,photo,resight,B 
+8-Apr-16,WS_609,NSH,M,3m,8:45,photo,initial sighting,R
+8-Apr-16,WS_608,NSH,F,3.5m ,8:45,photo,initial sighting,R
+8-Apr-16,WS_107,NSH,F,5m,8:00,photo,resight,B
+9-Apr-16,WS_609,NSH,M,NA,7:50,photo,initial sighitng ,R
+9-Apr-16,WS_033,NSH,F,4.5m ,7:50,photo,resight,B
+9-Apr-16,WS_507,NSH,M,6m,7:50,photo,resight,B
+9-Apr-16,UT_513,NSH,M,NA,7:50,photo,resight,B
+9-Apr-16,WS_608,NSH,F,NA,9:09,photo,initial sighting,L
+9-Apr-16,WS_603,NSH,M,4.5m ,9:09,photo,resight,L
+9-Apr-16,UT_604,NSH,UK,NA,8:18,photo,initial sighting,L
+9-Apr-16,WS_107,NSH,F,5m,8:50,photo,resight,R
+9-Apr-16,WS_607,NSH,M ,5m,10:11,photo,initial sighitng,R
+9-Apr-16,UT_603 ,NSH,UK,NA,10:35,photo,initial sighting,B
+9-Apr-16,WS_507,SSH,M,6m,15:45,photo,resight,B
+9-Apr-16,WS_605,SSH,F,4.5m ,15:45,photo ,resight,R
+10-Apr-16,WS_605,NSH,F ,4.5m ,7:42,photo,resight,B
+10-Apr-16,WS_402,NSH,F,5.5m,8:58,photo,re-tag,B
+10-Apr-16,WS_507,NSH,M,5.5m,7:58,photo,resight,B
+10-Apr-16,WS_607,NSH,M,6m ,8:44,photo,intial tag,B
+15-Apr-16,WS_605,NSH,F,4.5m,9:00,photo,resight,R
+23-Apr-16,WS_605,NSH,F ,4.5m ,9:28,photo,resight,R
+24-Apr-16,WS_605,NSH,F ,4.5m ,8:10,photo,resight,R
+24-Apr-16,WS_608,NSH/SSH,F ,3m,9:11,photo,initial tag,B
+24-Apr-16,WS_009,SSH,F ,7m,9:50,photo (L),resight,B
+24-Apr-16,WS_505,SSH,F ,4m,9:55,photo,resight,R
+25-Apr-16,WS_009,NSH,F ,7m,8:25,3D tag,resight,T
+29-Apr-16,WS_605,CSH,F ,4.5m ,8:54,photo,resight,R
+30-Apr-16,WS_603,NSH,M,4.5m,7:59,photo,resight,B
+30-Apr-16,WS_505,NSH,F ,4m,8:15,photo,resight,L
+1-May-16,WS_609,SSH,M,3.5m ,9:30,photo,intial tag,B
+6-May-16,WS_605,NSH,F,4.5m ,16:45,photo,resight,B
