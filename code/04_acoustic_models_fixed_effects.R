@@ -24,13 +24,15 @@ PADet <- readRDS("./data/processed/probability_acoustic_detection.rds")
 v <- c("nStations_inshore", "nStations_offshore", "sex", "size")
 s <- 1:4
 
+basic <- "present ~ s(week.2, bs = 'cc') + s(lag)"
+
 f <- foreach(i=4:1, .combine = c) %do% {
   combn(v, i) %>%
     apply(2, paste, collapse = " + ") %>%
-    paste("present ~ s(week.2, bs = 'cc') + s(lag)", ., sep = " + ")
-}
+    paste(basic, ., sep = " + ")
+} %>% c(basic)
 
-models.acoustic.fixed <- foreach(i=1:length(f)) %dopar% {
+fmodels.acoustic.fixed <- foreach(i=1:length(f)) %dopar% {
   try({
     gamm4 (as.formula(f[i]), family = "binomial", data = PADet, random= ~(1|ecocean))
   })
