@@ -7,6 +7,8 @@ library(foreach)
 library(doMC)
 library(magrittr)
 
+source("code/functions/pres.abs.lag.R")
+
 # bin window (weeks)
 
 option_list = list(
@@ -20,50 +22,6 @@ opt_parser = OptionParser(option_list=option_list)
 opt = parse_args(opt_parser)
 
 registerDoMC(cores = opt$ncores)
-
-# FUNCTION ----------------------------------------------------------------
-
-# Function to calculate the vectors of presence absence
-pres.abs.lag <- function (start.date, end.date, sightings, dates){
-  # Create a data frame with the detections
-  sight <- data.frame (id = sightings, date = dates) %>%
-    filter (date >= start.date, date <= end.date) %>%
-    mutate (id = factor (id)) %>% 
-    arrange (date)
-  
-  # For each shark we'll start with the first detection only
-  individuals <- levels (sight$id)
-  # Cycle trough each shark
-  presence.absence <- 
-    foreach (i=1:length (individuals), .combine = rbind) %dopar% {
-      # message(individuals[i])
-               # Find dates in which the shark was present
-      dates.present <- sight$date[sight$id == individuals[i]] %>%
-        as.numeric ()
-      # Establish all dates in which it was tagged (only dates in which there was monitoring)
-      dates.tagged <- unique(sight$date)[unique(sight$date) >= 
-                                           sight$date[match (individuals[i], sight$id)]]
-      if(length(dates.tagged)>1) {
-        # Find all possible combinations of dates in which it was tagged
-        dates.comb <- as.data.frame (t (combn (dates.tagged, 2))) %>%
-          tbl_df()
-        names (dates.comb) <- c ("date.1", "date.2")
-        dates.comb <- mutate (dates.comb, lag = date.2 - date.1, # Find the lag between given dates
-                              # Establish if it was present for in that lag
-                              present = (date.1 %in% dates.present) &
-                                (date.2 %in% dates.present), 
-                              date.1 = as.Date(date.1, origin = "1970-01-01"), 
-                              date.2 = as.Date(date.2, origin = "1970-01-01"), 
-                              id = individuals[i])
-        return (dates.comb)
-      } else {
-        return(NULL)
-      }
-      
-    }
-  return (presence.absence)
-}
-
 
 # READ DATA ---------------------------------------------------------------
 
@@ -89,8 +47,17 @@ ws.tags %<>%
 # Using only sharks present in the list of tagged sharks merge data frames
 det.ws <- inner_join (det.ws, select (ws.tags, -(size), -(number)))
 
+fake.sightings <- data_frame (date = seq(from = min(det.ws$datetime),
+                                         to = max(det.ws$datetime), 
+                                         by = paste(opt$window_length, 'week')), 
+                              id = "XXX")
+
+det.ws <- bind_rows(fake.sightings, det.ws)
+
 # Clump in a weekly basis
 det.ws <- mutate (det.ws, date.week = cut (datetime, paste(opt$window_length, 'week')) %>% as.Date ())
+
+
 aco.week <- plyr::ddply (det.ws, "date.week", function (det){
   sharks <- !duplicated (det$id)
   per.week <- data.frame (id = det$id[sharks], 
@@ -180,6 +147,14 @@ PADet <- inner_join (PADet, pres %>% select (date.2, nStations_inshore, nStation
   mutate (week.1 = lubridate::week (date.1), 
           week.2 = lubridate::week (date.2), 
           date.random = (as.numeric (date.1) - as.numeric (min (date.1))) / 7, 
-          date.id = paste (date.1, id))
+          date.id = paste (date.1, id)) %>%
+  filter (id != "XXX")
+
+
+# TAG SHEDDING ------------------------------------------------------------
+
+shed <- read.csv("data/raw/shed_tag_Lith.csv") %>%
+  rename(id = shark) %>%
+  mutate()
 
 saveRDS(PADet, "./data/processed/probability_acoustic_detection.rds")
