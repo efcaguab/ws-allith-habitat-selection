@@ -1,0 +1,96 @@
+---
+title: "Whale-shark Al-lith"
+output:
+  word_document: default
+subtitle: Supplementary information
+---
+
+# Model results
+
+```{r, echo = FALSE, message = FALSE}
+library(dplyr)
+library(gamm4)
+library(stringr)
+
+ma <- readRDS("./data/processed/models_acoustic_fixed.rds")
+mv <- readRDS("data/processed/models_visual_fixed.rds")
+```
+
+```{r, echo = FALSE}
+aictable <- . %>% plyr::ldply(function(x){
+  data_frame(f = as.character(formula(x$gam)[3])) %>% 
+    bind_cols(broom::glance(x$mer))
+})
+
+aictable(ma) %>% 
+  mutate(f = str_replace(f, "\\(([^)]+)\\)", "eason"), 
+         f = str_replace(f, "s\\(([^)]+)\\)", "lag"),
+         f = str_replace(f, "nStations_inshore", "effort (IS)"), 
+         f = str_replace(f, "nStations_offshore", "effort (OS)"),
+         delta_AIC = AIC - min(AIC), 
+         AIC = round(AIC, 2), 
+         delta_AIC = round(delta_AIC, 2)) %>%
+  arrange(delta_AIC) %>%
+  rename(`$\\Delta$AIC` = delta_AIC, 
+         model = f) %>%
+  select(-sigma, - df.residual) %>%
+  mutate_at(.vars = vars(logLik, AIC, BIC, deviance), 
+            .funs = funs(round, .args = list(digits = 1))) %>%
+  knitr::kable(caption = "Table 1. Model selection table for the acoustic recaptures")
+```
+
+```{r, echo = FALSE}
+aictable(mv) %>% 
+  mutate(f = str_replace(f, "\\(([^)]+)\\)", "eason"), 
+         f = str_replace(f, "s\\(([^)]+)\\)", "lag"),
+         f = str_replace(f, "hours", "effort"),
+         delta_AIC = AIC - min(AIC), 
+         AIC = round(AIC, 2), 
+         delta_AIC = round(delta_AIC, 2)) %>%
+ arrange(delta_AIC) %>%
+  rename(`$\\Delta$AIC` = delta_AIC, 
+         model = f) %>%
+  select(-sigma, - df.residual) %>%
+  mutate_at(.vars = vars(logLik, AIC, BIC, deviance), 
+            .funs = funs(round, .args = list(digits = 1))) %>%  knitr::kable(caption = "Table 2. Model selection table for the visual recaptures")
+```
+
+```{r, echo = FALSE}
+library(broom)
+
+best_models <- list(
+  acoustic = ma[[aictable(ma)$AIC %>% which.min()]], 
+  visual = mv[[aictable(mv)$AIC %>% which.min()]]
+)
+
+extract_vals <- function(x) {
+  terms.smooth <- summary(x$gam)$s.table  %>%
+    as.data.frame() %>% 
+    tibble::rownames_to_column() %>%
+    rename(Stat. = Chi.sq, 
+           EDF = edf)
+  terms.fixed <- summary(x$gam)$p.table %>%
+     as.data.frame() %>% 
+    tibble::rownames_to_column() %>%
+    rename(Stat. = `z value`,
+           `p-value` = `Pr(>|z|)`)
+  bind_rows(terms.fixed, terms.smooth) %>%
+    rename(variable = rowname) %>%
+    select(variable, EDF, Estimate, `Std. Error`, Stat., `p-value`) 
+}
+
+extract_vals(best_models$acoustic) %>% 
+  mutate(variable = if_else(variable == "s(week.2)", "season", variable),
+         variable = str_replace(variable, "nStations_inshore", "effort (IS)"),
+         variable = if_else(variable == "s(lag)", "lag", variable)) %>%
+  knitr::kable(caption = "Table 3. Model results for the most best model of acoustic recapture")
+```
+
+```{r, echo = FALSE}
+extract_vals(best_models$visual) %>% 
+  mutate(variable = if_else(variable == "s(week.2)", "season", variable),
+         variable = if_else(variable == "s(lag)", "lag", variable),
+         variable = if_else(variable == "hours", "effort", variable)) %>%
+  knitr::kable(caption = "Table 4. Model results for the most best model of visual recapture")
+```
+
