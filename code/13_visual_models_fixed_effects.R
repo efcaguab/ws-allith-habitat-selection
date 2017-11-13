@@ -24,7 +24,7 @@ PAEnc <- readRDS("./data/processed/probability_visual_detection.rds")
 v <- c("hours", "sex", "size")
 s <- 1:3
 
-basic <- "present ~ s(week.2, bs = 'cc', k = 4) + s(lag, k = 4)"
+basic <- "present ~ s(week.2, k = 4) + s(lag)"
 
 f <- foreach(i=3:1, .combine = c) %do% {
   combn(v, i) %>%
