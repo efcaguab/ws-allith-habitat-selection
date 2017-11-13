@@ -47,7 +47,7 @@ ws.tags %<>%
 # Using only sharks present in the list of tagged sharks merge data frames
 det.ws <- inner_join (det.ws, select (ws.tags, -(size), -(number)))
 
-fake.sightings <- data_frame (date = seq(from = min(det.ws$datetime),
+fake.sightings <- data_frame (datetime = seq(from = min(det.ws$datetime),
                                          to = max(det.ws$datetime), 
                                          by = paste(opt$window_length, 'week')), 
                               id = "XXX")
