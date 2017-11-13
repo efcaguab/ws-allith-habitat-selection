@@ -1,0 +1,28 @@
+all: analize
+
+analize: acoustic visual
+
+acoustic: ./data/processed/models_acoustic_random.rds ./data/processed/models_acoustic_fixed.rds
+
+./data/processed/AllDetections.RData: ./code/01_prepare_data.R ./data/raw/AllDetections_Lith.csv ./data/raw/AllEvents_Lith.csv ./data/raw/ArrayEvents_Lith.csv ./data/raw/WSTags_Lith.csv ./data/raw/Stations_Lith.csv
+  qsub -N prepare_a -V -cwd -j y -S /bin/bash -m a -M efc29@uclive.ac.nz -r yes -l mem_free=8G,h_vmem=8G runRscript.sh $<
+
+./data/processed/probability_acoustic_detection.rds: ./code/02_calculate_lags.R	./data/processed/AllDetections.RData
+  qsub -N pad -hold_jid prepare_a -V -cwd -j y -S /bin/bash -m a -M efc29@uclive.ac.nz -r yes -l mem_free=8G,h_vmem=8G runRscript.sh $< --window_length 4
+
+./data/processed/models_acoustic_random.rds: ./code/03_acoustic_models_random_effects.R ./data/processed/probability_acoustic_detection.rds
+  qsub -N mar -hold_jid pad -pe multi_thread 2 -V -cwd -j y -S /bin/bash -m a -M efc29@uclive.ac.nz -r yes -l mem_free=8G,h_vmem=8G runRscript.sh $< --ncores 2
+
+./data/processed/models_acoustic_fixed.rds: ./code/04_acoustic_models_fixed_effects.R ./data/processed/probability_acoustic_detection.rds
+  qsub -N maf -hold_jid pad -pe multi_thread 16 -V -cwd -j y -S /bin/bash -m a -M efc29@uclive.ac.nz -r yes -l mem_free=8G,h_vmem=8G runRscript.sh $< --ncores 16
+
+visual: ./data/processed/models_visual_random.rds ./data/processed/models_visual_fixed.rds
+
+./data/processed/probability_visual_detection.rds: ./code/11_prepare_data_visual.R ./data/raw/Survey_Effort_Lith.csv ./data/raw/Survey_Effort_Lith.csv ./data/processed/AllDetections.RData
+  qsub -N pvd -hold_jid prepare_a -V -cwd -j y -S /bin/bash -m a -M efc29@uclive.ac.nz -r yes -l mem_free=8G,h_vmem=8G runRscript.sh $< --window_length 4
+
+./data/processed/models_visual_random.rds: ./code/12_visual_models_random_effects.R ./data/processed/probability_visual_detection.rds
+  qsub -N mvr -hold_jid pvd -pe multi_thread 2 -V -cwd -j y -S /bin/bash -m a -M efc29@uclive.ac.nz -r yes -l mem_free=8G,h_vmem=8G runRscript.sh $< --ncores 2
+
+./data/processed/models_visual_fixed.rds: ./code/13_visual_models_fixed_effects.R ./data/processed/probability_visual_detection.rds
+  qsub -N mvf -hold_jid pvd -pe multi_thread 8 -V -cwd -j y -S /bin/bash -m a -M efc29@uclive.ac.nz -r yes -l mem_free=8G,h_vmem=8G runRscript.sh $< --ncores 8
