@@ -77,10 +77,10 @@ aco.week <- plyr::ddply (det.ws, "date.week", function (det){
 
 
 # Calculate probabilities
-PADet <- pres.abs.lag (start.date = min (aco.week$date.week), 
-                       end.date = max (aco.week$date.week),
-                       sightings = aco.week$id, 
-                       dates = aco.week$date.week)
+PADet <- pres.abs.lag(start.date = min(aco.week$date.week), 
+                      end.date = max (aco.week$date.week),
+                      sightings = aco.week$id, 
+                      dates = aco.week$date.week)
 # Change "id" column to "ecocean"
 # names (PADet)[5] <- "ecocean"
 
@@ -153,8 +153,22 @@ PADet <- inner_join (PADet, pres %>% select (date.2, nStations_inshore, nStation
 
 # TAG SHEDDING ------------------------------------------------------------
 
-shed <- read.csv("data/raw/shed_tag_Lith.csv") %>%
-  rename(id = shark) %>%
-  mutate()
+shed <- read.csv("data/raw/shed_tag_Lith2.csv") %>%
+  rename(id = Red.Sea.Numbering) %>%
+  mutate_at(vars(c("Date.Sighted.Without.Tag", 
+                   "Last.Detection.Before.Tag.Loss", 
+                   "Retagging.Date")), 
+            funs(as.POSIXct(., format = "%m/%d/%Y", tz = "Asia/Riyadh"))) %>%
+  rename(last_det = Last.Detection.Before.Tag.Loss, 
+         retag = Retagging.Date) %>%
+  mutate(retag = if_else(is.na(retag), max(det.ws$datetime), retag)) %>%
+  select(id, last_det, retag)
 
+
+PADet %<>%
+  left_join(shed) %>% 
+  mutate(undetectable = (date.1 >= last_det & date.1 <= retag) | (date.2 >= last_det & date.2 <= retag), 
+         undetectable = if_else(is.na(undetectable), FALSE, TRUE)) %>%
+  filter(!undetectable)
+  
 saveRDS(PADet, "./data/processed/probability_acoustic_detection.rds")
