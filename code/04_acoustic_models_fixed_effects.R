@@ -34,7 +34,7 @@ f <- foreach(i=4:1, .combine = c) %do% {
 
 fmodels.acoustic.fixed <- foreach(i=1:length(f)) %dopar% {
   try({
-    gamm4 (as.formula(f[i]), family = "binomial", data = PADet, random= ~(1|ecocean))
+    gamm4 (as.formula(f[i]), family = "binomial", data = PADet, random= ~(1|id))
   })
 }
 
