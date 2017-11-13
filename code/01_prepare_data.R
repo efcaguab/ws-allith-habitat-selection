@@ -1,8 +1,55 @@
 library (magrittr)
-library (VTrack)
 library(tibble)
 library(ggplot2)
 library(dplyr)
+
+## VTRACK dependence
+
+ReadInputData <- function (infile, iHoursToAdd = 0, fAATAMS = FALSE, fVemcoDualSensor = FALSE, 
+                           dateformat = NULL, sVemcoFormat = "Default") {
+  header.row <- c("DATETIME", "TRANSMITTERID", "SENSOR1", "UNITS1", 
+                  "RECEIVERID", "STATIONNAME")
+  if (is.null(dateformat) == TRUE) 
+    newDate <- as.POSIXct(strptime(infile[, 1], format = "%Y-%m-%d %H:%M:%S"))
+  if (is.null(dateformat) == FALSE) 
+    newDate <- as.POSIXct(strptime(infile[, 1], format = dateformat))
+  sDateTime <- newDate + (iHoursToAdd * 3600)
+  if (fAATAMS == TRUE) {
+    newdat <- data.frame(sDateTime, as.character(infile[, 
+                                                        6]), "", "", as.character(infile[, 5]), as.character(infile[, 
+                                                                                                                    2]))
+    names(newdat) <- header.row
+  }
+  else {
+    if (sVemcoFormat == "1.0") {
+      newdat <- data.frame(sDateTime, as.character(infile[, 
+                                                          3]), infile[, 4], infile[, 5], as.character(infile[, 
+                                                                                                             11]), as.character(infile[, 12]))
+      names(newdat) <- header.row
+    }
+    if (sVemcoFormat == "1.0" & fVemcoDualSensor == TRUE) {
+      dualsensor <- data.frame(sDateTime, as.character(infile[, 
+                                                              3]), infile[, 6], infile[, 7], as.character(infile[, 
+                                                                                                                 11]), as.character(infile[, 12]))
+      names(dualsensor) <- header.row
+      newdat <- rbind(newdat, dualsensor)
+    }
+    if (sVemcoFormat == "Default") {
+      newdat <- data.frame(sDateTime, as.character(infile[, 
+                                                          3]), infile[, 6], iconv(infile[, 7], "UTF-8", 
+                                                                                  "latin1"), as.character(infile[, 2]), as.character(infile[, 
+                                                                                                                                            8]))
+      names(newdat) <- header.row
+    }
+  }
+  newdat1 <- unique(newdat[order(as.character(newdat$DATETIME)), 
+                           1:6])
+  newdat1[, 6] <- as.character(newdat1[, 6])
+  addval <- which(is.na(newdat1[, 6]))
+  if (length(addval) > 0) 
+    newdat1[addval, 6] <- "Unknown"
+  return(newdat1)
+}
 
 # READ FILES --------------------------------------------------------------
 
