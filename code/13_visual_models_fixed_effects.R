@@ -15,7 +15,8 @@ opt = parse_args(opt_parser)
 
 registerDoMC(cores = opt$ncores)
 
-PAEnc <- readRDS("./data/processed/probability_visual_detection.rds")
+PAEnc <- readRDS("./data/processed/probability_visual_detection.rds") %>%
+  mutate(lag_log = log(lag))
 
 # FIXED EFFECTS -----------------------------------------------------------
 
@@ -24,7 +25,7 @@ PAEnc <- readRDS("./data/processed/probability_visual_detection.rds")
 v <- c("hours", "sex", "size")
 s <- 1:3
 
-basic <- "present ~ s(week.2, k = 4) + s(lag)"
+basic <- "present ~ s(week.2, k = 4) + s(lag_log)"
 
 f <- foreach(i=3:1, .combine = c) %do% {
   combn(v, i) %>%
@@ -35,7 +36,7 @@ f <- foreach(i=3:1, .combine = c) %do% {
 
 models.visual.fixed <- foreach(i=1:length(f)) %dopar% {
   try({
-    gamm4 (as.formula(f[i]), family = "binomial", data = PAEnc, random= ~(1|id))
+    gamm4 (as.formula(f[i]), family = "binomial", data = PAEnc, random= ~(1|id), REML = FALSE)
   })
 }
 

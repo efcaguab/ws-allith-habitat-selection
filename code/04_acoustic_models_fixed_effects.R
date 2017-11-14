@@ -15,7 +15,8 @@ opt = parse_args(opt_parser)
 
 registerDoMC(cores = opt$ncores)
 
-PADet <- readRDS("./data/processed/probability_acoustic_detection.rds")
+PADet <- readRDS("./data/processed/probability_acoustic_detection.rds") %>%
+  mutate(lag_log = log(lag))
 
 # FIXED EFFECTS -----------------------------------------------------------
 
@@ -24,7 +25,7 @@ PADet <- readRDS("./data/processed/probability_acoustic_detection.rds")
 v <- c("nStations_inshore", "nStations_offshore", "sex", "size")
 s <- 1:4
 
-basic <- "present ~ s(week.2, bs = 'cc') + s(lag)"
+basic <- "present ~ s(week.2, bs = 'cc') + s(lag_log)"
 
 f <- foreach(i=4:1, .combine = c) %do% {
   combn(v, i) %>%
@@ -34,7 +35,7 @@ f <- foreach(i=4:1, .combine = c) %do% {
 
 fmodels.acoustic.fixed <- foreach(i=1:length(f)) %dopar% {
   try({
-    gamm4 (as.formula(f[i]), family = "binomial", data = PADet, random= ~(1|id))
+    gamm4 (as.formula(f[i]), family = "binomial", data = PADet, random= ~(1|id), REML = FALSE)
   })
 }
 

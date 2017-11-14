@@ -15,15 +15,16 @@ opt = parse_args(opt_parser)
 
 registerDoMC(cores = opt$ncores)
 
-PAEnc <- readRDS("./data/processed/probability_visual_detection.rds")
+PAEnc <- readRDS("./data/processed/probability_visual_detection.rds") %>%
+  mutate(lag_log = log(lag))
 
 registerDoMC(cores = opt$ncores)
 
 # RANDOM EFFECTS ----------------------------------------------------------
 
 # Choose the random structure
-ma.r.01 <- . %>% gamm4 (present ~ s (week.2, k = 4) + s (lag) + hours + sex + size, family = "binomial", data = .)
-ma.r.02 <- . %>% gamm4 (present ~ s (week.2, k = 4) + s (lag) + hours + sex + size, family = "binomial", data = ., random= ~(1|id))
+ma.r.01 <- . %>% gamm4 (present ~ s (week.2, k = floor(n_distinct(PAEnc$week.2)/2)) + s (lag_log) + hours + sex + size, family = "binomial", data = ., REML = TRUE)
+ma.r.02 <- . %>% gamm4 (present ~ s (week.2, k = floor(n_distinct(PAEnc$week.2)/2)) + s (lag_log) + hours + sex + size, family = "binomial", data = ., random= ~(1|id), REML = TRUE)
 # ma.r.03 <- . %>% gamm4 (present ~ s (week.2, bs = "cc") + s (lag) + nStations_inshore + nStations_offshore + sex + size, family = "binomial", data = ., random= ~(1|ecocean/date.random))
 
 # Join instruction together so that they can be evaluated in parallels
