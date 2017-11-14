@@ -1,7 +1,11 @@
-library (magrittr)
-library(tibble)
-library(ggplot2)
-library(dplyr)
+suppressMessages({
+  suppressPackageStartupMessages({
+    library (magrittr)
+    library(tibble)
+    library(ggplot2)
+    library(dplyr)
+  })
+})
 
 ## VTRACK dependence
 

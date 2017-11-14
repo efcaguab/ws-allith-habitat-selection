@@ -1,9 +1,13 @@
-library(tibble)
-library(optparse)
-library(dplyr)
-library(magrittr)
-library(foreach)
-library(doMC)
+suppressMessages({
+  suppressPackageStartupMessages({
+    library(tibble)
+    library(optparse)
+    library(dplyr)
+    library(magrittr)
+    library(foreach)
+    library(doMC)
+  })
+})
 
 source("code/functions/pres.abs.lag.R")
 

@@ -1,4 +1,6 @@
 #!/usr/bin/env Rscript
+suppressMessages({
+  suppressPackageStartupMessages({
 library(optparse)
 library(dplyr)
 library(tibble)
@@ -6,6 +8,8 @@ library(magrittr)
 library(foreach)
 library(doMC)
 library(magrittr)
+  })
+})
 
 source("code/functions/pres.abs.lag.R")
 

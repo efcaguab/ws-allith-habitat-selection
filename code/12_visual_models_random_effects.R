@@ -1,9 +1,13 @@
-library (gamm4)
-library(foreach)
-library(magrittr)
-library(optparse)
-library(doMC)
-library(dplyr)
+suppressMessages({
+  suppressPackageStartupMessages({
+    library (gamm4)
+    library(foreach)
+    library(magrittr)
+    library(optparse)
+    library(doMC)
+    library(dplyr)
+  })
+})
 
 option_list = list(
   make_option(c("-nc", "--ncores"), type="integer", default=1, 
