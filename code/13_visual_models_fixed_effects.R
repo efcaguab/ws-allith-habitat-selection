@@ -1,6 +1,6 @@
 suppressMessages({
   suppressPackageStartupMessages({
-    library (mgcv)
+    library (gamm4)
     library(foreach)
     library(magrittr)
     library(optparse)
