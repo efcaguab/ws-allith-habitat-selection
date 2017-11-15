@@ -1,6 +1,6 @@
 suppressMessages({
   suppressPackageStartupMessages({
-    library (gamm4)
+    library (mgcv)
     library(foreach)
     library(magrittr)
     library(optparse)
@@ -40,7 +40,7 @@ f <- foreach(i=3:1, .combine = c) %do% {
 
 models.visual.fixed <- foreach(i=1:length(f)) %dopar% {
   try({
-    gamm4 (as.formula(f[i]), family = "binomial", data = PAEnc, random= ~(1|id), REML = FALSE)
+    gamm4 (as.formula(f[i]), family = "binomial", data = PAEnc, random= list(id = ~1), method = "ML")
   })
 }
 
