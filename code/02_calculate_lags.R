@@ -27,6 +27,9 @@ opt = parse_args(opt_parser)
 
 registerDoMC(cores = opt$ncores)
 
+message("window length is ", opt$window_length)
+
+
 # READ DATA ---------------------------------------------------------------
 
 load("./data/processed/AllDetections.RData")

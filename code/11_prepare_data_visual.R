@@ -24,6 +24,8 @@ opt = parse_args(opt_parser)
 
 registerDoMC(cores = opt$ncores)
 
+message("window length is ", opt$window_length)
+
 load("./data/processed/AllDetections.RData")
 
 # Table that contains tagged whale shark data
