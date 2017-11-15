@@ -1,6 +1,6 @@
 suppressMessages({
   suppressPackageStartupMessages({
-    library(mgcv)
+    library(gamm4)
     library(foreach)
     library(magrittr)
     library(optparse)
@@ -26,8 +26,8 @@ PADet <- readRDS("./data/processed/probability_acoustic_detection.rds") %>%
 # RANDOM EFFECTS ----------------------------------------------------------
 
 # Choose the random structure
-ma.r.01 <- . %>% gamm (present ~ s (week.2, bs = "cc") + s (lag_log) + nStations_inshore + nStations_offshore + sex + size, family = "binomial", data = ., method = "REML")
-ma.r.02 <- . %>% gamm (present ~ s (week.2, bs = "cc") + s (lag_log) + nStations_inshore + nStations_offshore + sex + size, family = "binomial", data = ., random= list(id = ~1), method = "REML")
+ma.r.01 <- . %>% gamm4 (present ~ s (week.2, bs = "cc") + s (lag_log) + nStations_inshore + nStations_offshore + sex + size, family = "binomial", data = ., REML = TRUE)
+ma.r.02 <- . %>% gamm4 (present ~ s (week.2, bs = "cc") + s (lag_log) + nStations_inshore + nStations_offshore + sex + size, family = "binomial", data = ., random= ~(1|id), REML = TRUE)
 
 # ma.r.03 <- . %>% gamm4 (present ~ s (week.2, bs = "cc") + s(lag_log) + nStations_inshore + nStations_offshore + sex + size, family = "binomial", data = ., random= ~(1|id))
 

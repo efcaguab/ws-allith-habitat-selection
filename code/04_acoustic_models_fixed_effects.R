@@ -1,6 +1,6 @@
 suppressMessages({
   suppressPackageStartupMessages({
-    library(mgcv)
+    library(gamm4)
     library(foreach)
     library(magrittr)
     library(optparse)
@@ -39,7 +39,7 @@ f <- foreach(i=4:1, .combine = c) %do% {
 
 models.acoustic.fixed <- foreach(i=1:length(f)) %dopar% {
   try({
-    gamm(as.formula(f[i]), family = "binomial", data = PADet, random=list(id= ~1), method = "ML")
+    gamm4(as.formula(f[i]), family = "binomial", data = PADet, random= ~ (1|id), REML = FALSE)
   })
 }
 
