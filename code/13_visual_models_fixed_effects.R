@@ -40,7 +40,7 @@ f <- foreach(i=3:1, .combine = c) %do% {
 
 models.visual.fixed <- foreach(i=1:length(f)) %dopar% {
   try({
-    gamm(as.formula(f[i]), family = "binomial", data = PAEnc, random= list(id = ~1), method = "ML")
+    gamm(as.formula(f[i]), family = "binomial", data = PAEnc, random= list(id = ~1), method = "ML", niterPQL = 50)
   })
 }
 

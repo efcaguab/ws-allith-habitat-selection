@@ -30,8 +30,8 @@ registerDoMC(cores = opt$ncores)
 k <- floor(n_distinct(PAEnc$week.2)/2)
 
 # Choose the random structure
-ma.r.01 <- . %>% gamm (present ~ s (week.2, k = k) + s (lag_log) + hours + sex + size, family = "binomial", data = ., method = "REML")
-ma.r.02 <- . %>% gamm (present ~ s (week.2, k = k) + s (lag_log) + hours + sex + size, family = "binomial", data = ., random= list(id = ~1), method = "REML")
+ma.r.01 <- . %>% gamm (present ~ s (week.2, k = k) + s (lag_log) + hours + sex + size, family = "binomial", data = ., method = "REML", niterPQL = 50)
+ma.r.02 <- . %>% gamm (present ~ s (week.2, k = k) + s (lag_log) + hours + sex + size, family = "binomial", data = ., random= list(id = ~1), method = "REML", niterPQL = 50)
 # ma.r.03 <- . %>% gamm4 (present ~ s (week.2, bs = "cc") + s (lag) + nStations_inshore + nStations_offshore + sex + size, family = "binomial", data = ., random= ~(1|ecocean/date.random))
 
 # Join instruction together so that they can be evaluated in parallels
