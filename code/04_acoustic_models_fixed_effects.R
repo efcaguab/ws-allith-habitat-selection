@@ -37,10 +37,15 @@ f <- foreach(i=4:1, .combine = c) %do% {
     paste(basic, ., sep = " + ")
 } %>% c(basic)
 
-models.acoustic.fixed <- foreach(i=1:length(f)) %dopar% {
+dir.create("./data/processed/models_acoustic_fixed/")
+
+for(i in 1:length(f)){
   try({
-    gamm4(as.formula(f[i]), family = "binomial", data = PADet, random= ~ (1|id), REML = FALSE)
+    mod <- gamm4(as.formula(f[i]), family = "binomial", data = PADet, random= ~ (1|id), REML = FALSE)
+    saveRDS(mod, paste0("./data/processed/models_acoustic_fixed/model_", i, ".rds"))
+    rm(mod)
   })
 }
 
-saveRDS (models.acoustic.fixed, "./data/processed/models_acoustic_fixed.rds")
+
+# saveRDS (models.acoustic.fixed, "./data/processed/models_acoustic_fixed.rds")
