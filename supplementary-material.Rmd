@@ -12,14 +12,28 @@ library(dplyr)
 library(gamm4)
 library(stringr)
 
-ma <- readRDS("./data/processed/models_acoustic_fixed.rds")
-mv <- readRDS("data/processed/models_visual_fixed.rds")
+ma <- readRDS("./data/processed/results_window6/models_acoustic_fixed.rds")
+mv <- readRDS("data/processed/results_window6/models_visual_fixed.rds")
+
+remove_errors <- . %>% plyr::llply(function(x){
+  if(any(class(x) == "try-error")){
+    return(NULL)
+  } else (
+    return(x)
+  )
+})
+
+ma <- remove_errors(ma)
+ma[sapply(ma, is.null)] <- NULL
+
+mv <- remove_errors(mv)
+mv[sapply(mv, is.null)] <- NULL
 ```
 
 ```{r, echo = FALSE}
 aictable <- . %>% plyr::ldply(function(x){
   data_frame(f = as.character(formula(x$gam)[3])) %>% 
-    bind_cols(broom::glance(x$mer))
+    bind_cols(broom::glance(x[[1]]))
 })
 
 aictable(ma) %>% 
@@ -33,8 +47,8 @@ aictable(ma) %>%
   arrange(delta_AIC) %>%
   rename(`$\\Delta$AIC` = delta_AIC, 
          model = f) %>%
-  select(-sigma, - df.residual) %>%
-  mutate_at(.vars = vars(logLik, AIC, BIC, deviance), 
+  select(-sigma, - df.residual, -deviance) %>%
+  mutate_at(.vars = vars(logLik, AIC, BIC), 
             .funs = funs(round, .args = list(digits = 1))) %>%
   knitr::kable(caption = "Table 1. Model selection table for the acoustic recaptures")
 ```
@@ -50,8 +64,8 @@ aictable(mv) %>%
  arrange(delta_AIC) %>%
   rename(`$\\Delta$AIC` = delta_AIC, 
          model = f) %>%
-  select(-sigma, - df.residual) %>%
-  mutate_at(.vars = vars(logLik, AIC, BIC, deviance), 
+  dplyr::select(-sigma, - deviance) %>%
+  mutate_at(.vars = vars(logLik, AIC, BIC), 
             .funs = funs(round, .args = list(digits = 1))) %>%  knitr::kable(caption = "Table 2. Model selection table for the visual recaptures")
 ```
 
@@ -66,14 +80,19 @@ best_models <- list(
 extract_vals <- function(x) {
   terms.smooth <- summary(x$gam)$s.table  %>%
     as.data.frame() %>% 
-    tibble::rownames_to_column() %>%
-    rename(Stat. = Chi.sq, 
-           EDF = edf)
+    tibble::rownames_to_column()
+  names(terms.smooth)[c(2, 4)] <- c("Stat.", "EDF")
+  # %>%
+  #   rename(Stat. = Chi.sq, 
+  #          EDF = edf)
   terms.fixed <- summary(x$gam)$p.table %>%
      as.data.frame() %>% 
-    tibble::rownames_to_column() %>%
-    rename(Stat. = `z value`,
-           `p-value` = `Pr(>|z|)`)
+    tibble::rownames_to_column()
+  names(terms.fixed)[c(4, 5)] <- c("Stat.", "p-value")
+# 
+#   %>%
+#     rename(Stat. = `z value`,
+#            `p-value` = `Pr(>|z|)`)
   bind_rows(terms.fixed, terms.smooth) %>%
     rename(variable = rowname) %>%
     select(variable, EDF, Estimate, `Std. Error`, Stat., `p-value`) 
